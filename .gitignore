@@ -1,0 +1,67 @@
+# Data — raw/large artefacts never committed
+data/raw/
+data/processed/
+*.bam
+*.sam
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.h5
+*.h5ad
+*.mtx
+*.mtx.gz
+*.RData
+
+# Results that are big / regenerable
+results/figures/*.png
+results/figures/*.pdf
+results/shap/*.pkl
+results/shap/*.npy
+results/report/*.html
+results/report/*.pdf
+
+# Validation reports (regenerable)
+results/validation/
+
+# Keep result placeholders
+!results/**/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.hypothesis/
+build/
+dist/
+
+# Virtualenvs
+.venv/
+venv/
+env/
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Node (used only for docx generation, regenerable)
+node_modules/
+package-lock.json
+
+# Note: .docx outputs in results/ are kept in repo as deliverables
+# (small binaries, professor-shareable artefacts)
+
+# Quarto
+_site/
+.quarto/

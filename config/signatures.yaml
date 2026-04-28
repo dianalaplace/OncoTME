@@ -1,0 +1,91 @@
+# TME-панель: какие сигнатуры включены в feature-ядро OncoTME.
+# Источник сигнатур: signatures/tme_signatures.gmt (наследовано из DrugResponce).
+
+gmt_file: signatures/tme_signatures.gmt
+
+modules:
+
+  immune:
+    - B_cell
+    - CD4_T_cell
+    - CD8_T_cell
+    - NK_cell
+    - Treg
+    - Dendritic
+    - M2_macrophage
+    - MDSC_proxy
+    - TLS_signature
+    - IFN_gamma
+
+  stromal:
+    - CAF_proxy
+    - TGFb
+    - angiogenesis
+    - hypoxia
+    - CXCL1_MDSC_axis
+    - M2_polarization
+
+  antigen_presentation:
+    - HLA_I_score
+    - HLA_II_score
+    - APM_score
+    - checkpoint_score
+
+# Дополнительные "эталонные" сигнатуры, считаются как baselines.
+baselines:
+  TIS_18gene:
+    description: "Ayers 2017 Tumor Inflammation Signature — 18 genes."
+    genes: [CCL5, CD27, CD274, CD276, CD8A, CMKLR1, CXCL9, CXCR6, HLA-DQA1,
+            HLA-DRB1, HLA-E, IDO1, LAG3, NKG7, PDCD1LG2, PSMB10, STAT1, TIGIT]
+
+  CYT_Rooney:
+    description: "Rooney 2015 cytolytic activity = sqrt(GZMA * PRF1)."
+    formula: "geomean(GZMA, PRF1)"
+
+  ESTIMATE_immune:
+    description: "Yoshihara 2013 ssGSEA-based Immune score."
+    external: true
+
+  ESTIMATE_stromal:
+    description: "Yoshihara 2013 ssGSEA-based Stromal score."
+    external: true
+
+# Индивидуальные гены (прямые TPM/log2-intensity) для модуля APM/immune-evasion.
+individual_genes:
+  apm_evasion:
+    - HLA-A
+    - HLA-B
+    - HLA-C
+    - B2M
+    - TAP1
+    - TAP2
+    - PSMB8
+    - PSMB9
+    - NLRC5
+    - CIITA
+    - HLA-DRA
+    - HLA-DRB1
+    - HLA-DQA1
+    - HLA-DQB1
+  checkpoints_ligands:
+    - CD274        # PD-L1
+    - PDCD1LG2     # PD-L2
+    - CTLA4
+    - LAG3
+    - HAVCR2       # TIM-3
+    - TIGIT
+    - IDO1
+    - VISTA
+
+# Клинические ковариаты, которые всегда включаются в модели (если доступны)
+clinical_covariates:
+  - age
+  - stage
+  - grade
+  - subtype_er
+  - subtype_pr
+  - subtype_her2
+  - intrinsic_pam50
+  - ki67
+  - tnm_t
+  - tnm_n

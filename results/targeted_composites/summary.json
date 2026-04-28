@@ -1,0 +1,199 @@
+{
+  "composites": [
+    {
+      "class_name": "anti-HER2",
+      "formula": "z(NK_cell) + z(HLA_I_score) + z(B_cell) + z(TLS_signature) - z(CAF_proxy) - z(TGFb_activity)",
+      "biology": "ADCC \u2014 NK-cell effector + antigen presentation, limited by stroma/TGF\u03b2",
+      "citations": [
+        "Stagg PNAS 2011",
+        "Triulzi Oncotarget 2015",
+        "Shi JCI 2015",
+        "Kurozumi BCR 2019"
+      ]
+    },
+    {
+      "class_name": "PARPi+platinum",
+      "formula": "z(IFN_gamma) + z(cytolytic_score) + z(CXCL1_MDSC_axis) - z(CAF_proxy)",
+      "biology": "DNA damage \u2192 STING/IFN-I, proliferation-dependent",
+      "citations": [
+        "Pantelidou Cancer Discov 2019",
+        "Sen Cancer Cell 2019",
+        "Post CCR 2022",
+        "Loibl GeparOLA 2018"
+      ]
+    },
+    {
+      "class_name": "anti-Angiopoietin",
+      "formula": "z(angiogenesis) + z(M2_macrophage) + z(hypoxia_score) - z(TLS_signature)",
+      "biology": "vascular normalization + Tie2+/M2 macrophage dependency",
+      "citations": [
+        "De Palma Cell 2012",
+        "Rigamonti Nat Rev Clin Oncol 2014",
+        "Murdoch Blood 2004"
+      ]
+    },
+    {
+      "class_name": "anti-IGF-1R",
+      "formula": "- z(CAF_proxy) - z(TGFb_activity) - z(immune_exclusion)",
+      "biology": "stromal IGF-1 paracrine loop blunts IGF-1R blockade",
+      "citations": [
+        "Cao Cancer Res 2013",
+        "Wang Cancer Discov 2015",
+        "Fu Cell Rep 2019"
+      ]
+    },
+    {
+      "class_name": "pan-HER TKI",
+      "formula": "z(angiogenesis) - z(TGFb_activity) - z(CAF_proxy)",
+      "biology": "pan-HER inhibition; TGF\u03b2-EMT drives resistance",
+      "citations": [
+        "Canonici Oncotarget 2013",
+        "Chandarlapaty Cancer Discov 2015",
+        "Shibue NEJM 2019"
+      ]
+    },
+    {
+      "class_name": "AKT inhibitor",
+      "formula": "- z(immune_exclusion) - z(TGFb_activity) - z(M2_macrophage)",
+      "biology": "PI3K/AKT axis; bypassed via stromal/immune-suppressive signaling",
+      "citations": [
+        "Ma Mol Cancer Ther 2010",
+        "Kechagioglou Anticancer Res 2014"
+      ]
+    }
+  ],
+  "results": [
+    {
+      "class_name": "anti-HER2",
+      "biology": "ADCC \u2014 NK-cell effector + antigen presentation, limited by stroma/TGF\u03b2",
+      "arm_labels": "Paclitaxel + Trastuzumab; Paclitaxel + Pertuzumab + Trastuzumab; Paclitaxel + AMG 386 + Trastuzumab; Paclitaxel + MK-2206 + Trastuzumab; T-DM1 + Pertuzumab",
+      "formula": "z(NK_cell) + z(HLA_I_score) + z(B_cell) + z(TLS_signature) - z(CAF_proxy) - z(TGFb_activity)",
+      "n_ctrl": 179,
+      "n_trt": 180,
+      "pcr_ctrl": 0.17318435754189945,
+      "pcr_trt": 0.48333333333333334,
+      "baseline_OR": 4.466181061394381,
+      "baseline_p": 3.7568109081323805e-10,
+      "n": 359,
+      "n_pcr": 118,
+      "beta_score": 0.12964497595312652,
+      "beta_arm": 1.826897790091627,
+      "beta_interaction": 0.2812895300562579,
+      "or_interaction": 1.3248371285799925,
+      "or_ci_lo": 0.7900103432918344,
+      "or_ci_hi": 2.2217347306498505,
+      "p_interaction": 0.28625172509001817,
+      "q_bh_class": 0.3189601151534265
+    },
+    {
+      "class_name": "PARPi+platinum",
+      "biology": "DNA damage \u2192 STING/IFN-I, proliferation-dependent",
+      "arm_labels": "Paclitaxel + ABT 888 + Carboplatin",
+      "formula": "z(IFN_gamma) + z(cytolytic_score) + z(CXCL1_MDSC_axis) - z(CAF_proxy)",
+      "n_ctrl": 179,
+      "n_trt": 71,
+      "pcr_ctrl": 0.17318435754189945,
+      "pcr_trt": 0.38028169014084506,
+      "baseline_OR": 2.929618768328446,
+      "baseline_p": 0.000801285493732416,
+      "n": 250,
+      "n_pcr": 58,
+      "beta_score": 0.1546805366146273,
+      "beta_arm": 0.9333361052973553,
+      "beta_interaction": 0.3421630594026789,
+      "or_interaction": 1.4079898647833726,
+      "or_ci_lo": 0.7183818081969789,
+      "or_ci_hi": 2.7595847176424035,
+      "p_interaction": 0.3189601151534265,
+      "q_bh_class": 0.3189601151534265
+    },
+    {
+      "class_name": "anti-Angiopoietin",
+      "biology": "vascular normalization + Tie2+/M2 macrophage dependency",
+      "arm_labels": "Paclitaxel + AMG 386; Paclitaxel + AMG-386",
+      "formula": "z(angiogenesis) + z(M2_macrophage) + z(hypoxia_score) - z(TLS_signature)",
+      "n_ctrl": 179,
+      "n_trt": 115,
+      "pcr_ctrl": 0.17318435754189945,
+      "pcr_trt": 0.28695652173913044,
+      "baseline_OR": 1.9213217938631,
+      "baseline_p": 0.02932523039075793,
+      "n": 294,
+      "n_pcr": 64,
+      "beta_score": -0.1311776726197743,
+      "beta_arm": 0.6883885037248743,
+      "beta_interaction": 0.40312934375149967,
+      "or_interaction": 1.496500442127347,
+      "or_ci_lo": 0.8390765387403916,
+      "or_ci_hi": 2.669021799428771,
+      "p_interaction": 0.1720610361342726,
+      "q_bh_class": 0.2580915542014089
+    },
+    {
+      "class_name": "anti-IGF-1R",
+      "biology": "stromal IGF-1 paracrine loop blunts IGF-1R blockade",
+      "arm_labels": "Paclitaxel + Ganitumab",
+      "formula": "- z(CAF_proxy) - z(TGFb_activity) - z(immune_exclusion)",
+      "n_ctrl": 179,
+      "n_trt": 105,
+      "pcr_ctrl": 0.17318435754189945,
+      "pcr_trt": 0.22857142857142856,
+      "baseline_OR": 1.4145758661887695,
+      "baseline_p": 0.27795819519107084,
+      "n": 284,
+      "n_pcr": 55,
+      "beta_score": -0.4744547462344421,
+      "beta_arm": 0.28738754088180946,
+      "beta_interaction": 0.7685025554287948,
+      "or_interaction": 2.156534543790289,
+      "or_ci_lo": 1.1653542578986122,
+      "or_ci_hi": 3.990753204048792,
+      "p_interaction": 0.014394433957275257,
+      "q_bh_class": 0.04318330187182577
+    },
+    {
+      "class_name": "pan-HER TKI",
+      "biology": "pan-HER inhibition; TGF\u03b2-EMT drives resistance",
+      "arm_labels": "Paclitaxel + Neratinib",
+      "formula": "z(angiogenesis) - z(TGFb_activity) - z(CAF_proxy)",
+      "n_ctrl": 179,
+      "n_trt": 114,
+      "pcr_ctrl": 0.17318435754189945,
+      "pcr_trt": 0.3684210526315789,
+      "baseline_OR": 2.78494623655914,
+      "baseline_p": 0.00027882013278595014,
+      "n": 293,
+      "n_pcr": 73,
+      "beta_score": -0.3650528362597175,
+      "beta_arm": 1.158470169687573,
+      "beta_interaction": 0.8471379149635454,
+      "or_interaction": 2.3329601571895013,
+      "or_ci_lo": 1.2685237965119411,
+      "or_ci_hi": 4.290580208270006,
+      "p_interaction": 0.006428207070960828,
+      "q_bh_class": 0.03856924242576497
+    },
+    {
+      "class_name": "AKT inhibitor",
+      "biology": "PI3K/AKT axis; bypassed via stromal/immune-suppressive signaling",
+      "arm_labels": "Paclitaxel + MK-2206",
+      "formula": "- z(immune_exclusion) - z(TGFb_activity) - z(M2_macrophage)",
+      "n_ctrl": 179,
+      "n_trt": 60,
+      "pcr_ctrl": 0.17318435754189945,
+      "pcr_trt": 0.3,
+      "baseline_OR": 2.046082949308756,
+      "baseline_p": 0.042562010611084784,
+      "n": 239,
+      "n_pcr": 49,
+      "beta_score": -0.56518370205526,
+      "beta_arm": 0.7356367883799382,
+      "beta_interaction": 0.716573952819359,
+      "or_interaction": 2.047406669039283,
+      "or_ci_lo": 1.0399945046338632,
+      "or_ci_hi": 4.0306694407989285,
+      "p_interaction": 0.0381317775319184,
+      "q_bh_class": 0.0762635550638368
+    }
+  ]
+}

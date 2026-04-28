@@ -1,0 +1,131 @@
+# Конфигурация когорт OncoTME.
+# Пути к raw/processed артефактам, endpoint-mapping, treatment-context.
+# v1 = обязательные; v2 = планируемые.
+
+defaults:
+  data_raw: data/raw
+  data_processed: data/processed
+  random_seed: 42
+
+cohorts:
+
+  # === Discovery / prognostic ===
+  tcga_brca:
+    version: v1
+    role: prognostic
+    platform: rnaseq
+    source: gdc
+    expr_kind: tpm
+    endpoints: [OS, DFI, PFI]
+    treatment_context: mixed_adjuvant
+    notes: "~1100 BRCA; TCGA XenaBrowser или GDC API."
+
+  metabric:
+    version: v1
+    role: prognostic
+    platform: microarray_illumina_ht12
+    source: cbioportal
+    expr_kind: log2_intensity
+    endpoints: [OS, DSS, RFS]
+    treatment_context: mixed_adjuvant_endocrine
+    notes: "~1980; сильна для HR+ endocrine long follow-up."
+
+  scan_b:
+    version: v2
+    role: prognostic
+    platform: rnaseq
+    source: geo
+    geo_accession: [GSE81540, GSE96058]
+    endpoints: [OS, RFS]
+    treatment_context: population_based
+    notes: "~3200, population-based long term."
+
+  # === Predictive / response ===
+  mdacc_hatzis:
+    version: v1
+    role: predictive
+    geo_accession: GSE25066
+    treatment_context: neoadjuvant_chemo
+    regimen: "T-FAC / FEC anthracycline + taxane"
+    endpoints: [pCR, DRFS]
+
+  ispy1:
+    version: v2
+    role: predictive
+    geo_accession: GSE22226
+    treatment_context: neoadjuvant_chemo
+    regimen: "AC -> T"
+    endpoints: [pCR, RFS]
+
+  gepar_sixto:
+    version: v2
+    role: predictive
+    geo_accession: GSE87455
+    treatment_context: neoadjuvant_chemo_plus_bevacizumab
+    subtype_focus: [TNBC, HER2+]
+    endpoints: [pCR, DFS]
+
+  calgb_40601:
+    version: v1
+    role: predictive
+    geo_accession: GSE181574
+    treatment_context: neoadjuvant_her2
+    regimen: "paclitaxel + trastuzumab ± lapatinib"
+    subtype_focus: [HER2+]
+    endpoints: [pCR, RFS]
+
+  neoaltto:
+    version: v2
+    role: predictive
+    geo_accession: GSE50948
+    treatment_context: neoadjuvant_her2
+    regimen: "lapatinib / trastuzumab / both + paclitaxel"
+    subtype_focus: [HER2+]
+    endpoints: [pCR, DFS]
+
+  gepar_nuevo:
+    version: v1
+    role: predictive
+    geo_accession: GSE173839
+    treatment_context: neoadjuvant_chemo_plus_ici
+    regimen: "durvalumab + nab-paclitaxel"
+    subtype_focus: [TNBC]
+    endpoints: [pCR, iDFS]
+
+  ispy2:
+    version: v1
+    role: predictive
+    geo_accession: GSE194040
+    treatment_context: neoadjuvant_multi_arm
+    arms:
+      - control
+      - pembrolizumab
+      - durvalumab_olaparib
+      - neratinib
+      - veliparib_carboplatin
+      - T_DM1_pertuzumab
+      - MK_2206
+      - AMG_386
+      - ganetespib
+      - ganitumab
+      - pertuzumab
+    endpoints: [pCR, EFS]
+
+  transatac:
+    version: v2
+    role: predictive
+    geo_accession: GSE59515
+    treatment_context: endocrine
+    regimen: "aromatase inhibitor / tamoxifen"
+    subtype_focus: [HR+]
+    endpoints: [Ki67_dynamics, DRFS]
+
+  bassez_2021:
+    version: v2
+    role: predictive
+    geo_accession: GSE169246
+    platform: scrna
+    treatment_context: neoadjuvant_ici_metastatic
+    regimen: "anti-PD1 pre/on-treatment"
+    endpoints: [T_cell_clonal_expansion]
+    notes: "scRNA + TCR; вторичный endpoint."

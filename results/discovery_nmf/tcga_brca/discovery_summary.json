@@ -1,0 +1,52 @@
+{
+  "k_star": 6,
+  "factors": [
+    "CAF_proxy-high_checkpoint_score-low",
+    "immune-desert_APM-low",
+    "TLS-rich",
+    "CAF_proxy-high_CXCL1_MDSC_axis-low",
+    "antigen-presenting",
+    "immune-desert"
+  ],
+  "nmf_cophenetic": 0.9998882349872595,
+  "nmf_stability": 0.9999021682083256,
+  "explained_variance": 0.9860914635651624,
+  "os": {
+    "c_index": 0.6106145055561398,
+    "c_index_ci": [
+      0.5498466413874771,
+      0.6731901632356364
+    ],
+    "n_train": 740,
+    "tertile_logrank_p": 0.004376379703123617,
+    "tertile_sizes": {
+      "low": 396,
+      "medium": 351,
+      "high": 349
+    },
+    "tertile_medians": {
+      "low": 3959.0,
+      "medium": NaN,
+      "high": 3409.0
+    }
+  },
+  "dfs": {
+    "c_index": 0.6193609022556391,
+    "c_index_ci": [
+      0.5352006095248176,
+      0.6945666619631253
+    ],
+    "n_train": 69,
+    "tertile_logrank_p": 0.022220940801563192,
+    "tertile_sizes": {
+      "low": 35,
+      "medium": 36,
+      "high": 37
+    },
+    "tertile_medians": {
+      "low": 44.119579500657025,
+      "medium": 26.21550591327201,
+      "high": 23.94875164257556
+    }
+  }
+}

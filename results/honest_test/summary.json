@@ -1,0 +1,20 @@
+{
+  "locked_formula": "stromal_score = z(CAF_proxy) + z(TGFb_activity)",
+  "n_valid_arms": 7,
+  "n_arms_or_below_1": 7,
+  "sign_test_one_sided_p": 0.0078125,
+  "meta_analysis": {
+    "pooled_log_or": -0.4756551766064877,
+    "pooled_or": 0.6214777453690208,
+    "pooled_ci_lo": 0.4860526245581376,
+    "pooled_ci_hi": 0.7946353305675099,
+    "pooled_p": 0.0001487687501480206,
+    "tau2": 0.0,
+    "n_arms": 7,
+    "Q": 3.9345555781695114,
+    "Q_df": 6
+  },
+  "h2_concordant_arms": 2,
+  "r1_frac_p_below_05": 0.48,
+  "overall_verdict_points": 2
+}

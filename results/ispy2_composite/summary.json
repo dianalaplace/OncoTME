@@ -1,0 +1,71 @@
+{
+  "composite_components_positive": [
+    "IFN_gamma",
+    "HLA_I_score",
+    "B_cell",
+    "checkpoint_score"
+  ],
+  "composite_components_negative": [
+    "CAF_proxy"
+  ],
+  "composite_result": {
+    "n": 248,
+    "events": 62,
+    "beta_score": 0.24856939860822588,
+    "beta_arm": 1.1869963706171363,
+    "beta_interaction": 1.0909931340200856,
+    "or_interaction": 2.9772293926011146,
+    "p_interaction": 0.01964024338219777,
+    "ci_or_interaction_lo": 1.1906554580139148,
+    "ci_or_interaction_hi": 7.4445506435199285
+  },
+  "tis_result": {
+    "n": 248,
+    "events": 62,
+    "beta_score": 0.44281727807291316,
+    "beta_arm": 1.0380872202409992,
+    "beta_interaction": 1.0629943928021153,
+    "or_interaction": 2.895026870869573,
+    "p_interaction": 0.0347754289685719,
+    "ci_or_interaction_lo": 1.0790027724084872,
+    "ci_or_interaction_hi": 7.767524604546555
+  },
+  "tertile_effects": [
+    {
+      "tertile": "low",
+      "n_ctrl": 65,
+      "n_pembro": 18,
+      "orr_ctrl": 0.1076923076923077,
+      "orr_pembro": 0.05555555555555555,
+      "arr": -0.052136752136752146,
+      "or": 0.6685714285714286,
+      "or_ci_lo": 0.10696811444106662,
+      "or_ci_hi": 4.178700890799621
+    },
+    {
+      "tertile": "medium",
+      "n_ctrl": 53,
+      "n_pembro": 29,
+      "orr_ctrl": 0.1509433962264151,
+      "orr_pembro": 0.4827586206896552,
+      "arr": 0.3318152244632401,
+      "or": 5.007590132827324,
+      "or_ci_lo": 1.7979845635873715,
+      "or_ci_hi": 13.94670424108512
+    },
+    {
+      "tertile": "high",
+      "n_ctrl": 61,
+      "n_pembro": 22,
+      "orr_ctrl": 0.26229508196721313,
+      "orr_pembro": 0.7272727272727273,
+      "arr": 0.46497764530551416,
+      "or": 7.0,
+      "or_ci_lo": 2.4053365594152845,
+      "or_ci_hi": 20.371369573292256
+    }
+  ],
+  "n_ctrl": 179,
+  "n_pembro": 69,
+  "n_events": 62
+}

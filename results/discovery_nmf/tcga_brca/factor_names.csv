@@ -1,0 +1,7 @@
+factor,name,top_signatures,low_signatures,name_unique
+factor_1,CAF_proxy-high_checkpoint_score-low,"CAF_proxy,TGFb_activity,angiogenesis","checkpoint_score,hypoxia_score,MDSC_proxy",CAF_proxy-high_checkpoint_score-low
+factor_2,immune-desert_APM-low,"CXCL1_MDSC_axis,hypoxia_score,MDSC_proxy","APM_score,CAF_proxy,CD4_T_cell",immune-desert_APM-low
+factor_3,TLS-rich,"B_cell,TLS_signature,CD4_T_cell","TGFb_activity,MDSC_proxy,hypoxia_score",TLS-rich
+factor_4,CAF_proxy-high_CXCL1_MDSC_axis-low,"CAF_proxy,hypoxia_score,angiogenesis","CXCL1_MDSC_axis,Dendritic,M2_polarization",CAF_proxy-high_CXCL1_MDSC_axis-low
+factor_5,antigen-presenting,"APM_score,HLA_I_score,HLA_II_score","B_cell,angiogenesis,TGFb_activity",antigen-presenting
+factor_6,immune-desert,"NK_cell,M2_macrophage,HLA_II_score","B_cell,CXCL1_MDSC_axis,hypoxia_score",immune-desert
