@@ -1,46 +1,46 @@
 # OncoTME
 
-**Опухолевое микроокружение как прогностический и предиктивный биомаркер при раке молочной железы.**
+**Tumor microenvironment (TME) as a prognostic and predictive biomarker in breast cancer.**
 
-ML-фреймворк, который использует молекулярный профиль TME (иммунная инфильтрация, строма, антиген-презентация) для двух параллельных задач:
+An ML framework that uses molecular TME profiling (immune infiltration, stroma, antigen presentation) for two parallel tasks:
 
-1. **Prognostic** — прогноз безрецидивной / общей выживаемости (RFS / DFS / OS)
-2. **Predictive** — прогноз ответа на терапию (pCR в неоадъюванте, ORR) по классам: chemo, endocrine, anti-HER2, PARP, CDK4/6, ICI
+1. **Prognostic** — predicting relapse-free / overall survival (RFS / DFS / OS)
+2. **Predictive** — predicting response to therapy (neoadjuvant pCR, ORR) across treatment classes: chemo, endocrine, anti-HER2, PARP, CDK4/6, ICI
 
-## Гипотезы
+## Hypotheses
 
 | # | |
 |---|---|
-| **H1** | TME-архетип — независимый предиктор RFS/OS при контроле на клинику и подтип |
-| **H2** | Роль TME-компонентов зависит от класса терапии (chemo / anti-HER2 / PARP / ICI / endocrine) |
-| **H3** | TME-эффект подтип-специфичен (TNBC / HER2+ / HR+) |
-| **H4** | Дефект антиген-презентации (APM/HLA-low) — маркер плохого RFS независимо от инфильтрации |
-| **H5** | TME-hot профиль → больший relative benefit от добавления таргетной / ICI поверх chemo |
+| **H1** | TME archetype is an independent predictor of RFS/OS after controlling for clinical variables and subtype |
+| **H2** | The role of TME components depends on treatment class (chemo / anti-HER2 / PARP / ICI / endocrine) |
+| **H3** | The TME effect is subtype-specific (TNBC / HER2+ / HR+) |
+| **H4** | Antigen-presentation defects (APM/HLA-low) mark poor RFS independent of infiltration |
+| **H5** | A "TME-hot" profile confers greater relative benefit from adding targeted therapy / ICI on top of chemo |
 
-## Данные (публичные)
+## Data (public)
 
 - **Discovery / prognostic**: TCGA-BRCA, METABRIC, SCAN-B
 - **Predictive / response**: GSE25066 (MDACC), I-SPY1/2 (GSE22226, GSE194040), GeparSixto (GSE87455), GeparNuevo (GSE173839), CALGB 40601 (GSE181574), NeoALTTO (GSE50948), TransATAC (GSE59515), Bassez 2021 (GSE169246)
 
-## Структура
+## Structure
 
 ```
 src/oncotme/
-├── cohorts/    # loader'ы каждой когорты → CohortBundle
-├── preprocess/ # нормализация, gene harmonization, ComBat, QC
-├── features/   # ssGSEA сигнатуры, TME-панель, baselines (TIS, CYT, ESTIMATE)
-├── models/     # response.py (clf), survival.py (Cox/RSF), blocks.py (ablation)
-├── explain/    # SHAP, PD, interactions
-├── stats/      # DeLong, compareC, bootstrap, calibration, DCA
-└── report/     # Quarto integration
+├── cohorts/ # per-cohort loaders → CohortBundle
+├── preprocess/ # normalization, gene harmonization, ComBat, QC
+├── features/ # ssGSEA signatures, TME panel, baselines (TIS, CYT, ESTIMATE)
+├── models/ # response.py (clf), survival.py (Cox/RSF), blocks.py (ablation)
+├── explain/ # SHAP, PD, interactions
+├── stats/ # DeLong, compareC, bootstrap, calibration, DCA
+└── report/ # Quarto integration
 ```
 
-## Ключевые результаты (flagship figures)
+## Key results (flagship figures)
 
 - **TME × treatment interaction heatmap** — `feature × treatment → {pCR-OR, RFS-HR}`
-- **Subtype-stratified SHAP** — отдельные ранжирования в TNBC / HER2+ / HR+
-- **Block-importance** — % |SHAP| по модулям (immune / stromal / APM / clinical)
-- **Survival по TME-архетипам** — KM-curves с multivariable Cox
+- **Subtype-stratified SHAP** — separate rankings for TNBC / HER2+ / HR+
+- **Block importance** — % |SHAP| by module (immune / stromal / APM / clinical)
+- **Survival by TME archetype** — KM curves with multivariable Cox models
 
 ## Quick start
 
@@ -48,21 +48,21 @@ src/oncotme/
 python -m venv .venv && source .venv/bin/activate
 pip install -e .[dev]
 
-# когортные artefacts
+# build per-cohort artifacts
 python scripts/build_features.py --config config/cohorts.yaml
 
-# модели
+# train models
 python scripts/train_survival.py --cohort tcga_brca
 python scripts/train_response.py --cohort pooled_neoadjuvant
 
-# отчёт
+# render report
 quarto render report/
 ```
 
-## Переиспользуемое
+## Shared components
 
-Проект наследует ряд модулей из сестринского `DrugResponce/` (ssGSEA-обёртка, ComBat, nested-CV каркас, TME-сигнатуры GMT).
+This project reuses several modules from the sibling `DrugResponse/` repo (ssGSEA wrapper, ComBat, nested-CV scaffold, TME signature GMTs).
 
-## Лицензия / статус
+## License / status
 
 Research use. In development.
